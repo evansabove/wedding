@@ -5,9 +5,9 @@
         <div class="splash-container">
         </div>  
 
-        <Panel index="0" image="pic1.jpg" title="When?" content="We're not entirely sure."/>
-        <Panel index="1" image="pic2.jpg" title="Where?" content="We haven't decided yet."/>
-        <Panel index="2" image="pic3.jpg" title="What's the plan afterwards?" content="We haven't decided yet."/>
+        <Panel :index="0" image="pic1.jpg" title="When is it?" content="We're not entirely sure."/>
+        <Panel :index="1" image="pic2.jpg" title="Where is it?" content="We haven't decided yet."/>
+        <Panel :index="2" image="pic3.jpg" title="What's the plan afterwards?" content="We haven't decided yet."/>
     </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
 .splash-container {
     width: 100%;
     height: 500px;
-    background-image: url('../../public/splash4.jpg');
+    background-image: url('../../public/splash5.jpg');
     background-position: center center;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -58,11 +58,13 @@ export default {
     font-size: 5rem;
     margin: 0;
     margin-bottom: 20px;
+    text-align: center;
 }
 .sub-heading {
     font-size: 1.2rem;
     margin: 0;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 1024px) {

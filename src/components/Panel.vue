@@ -1,37 +1,13 @@
 <template>
   <div class="card-container">
-    <div v-if="index % 2 == 0">
-      <b-card no-body class="overflow-hidden" style="max-height: 300px">
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-body :title="title">
-              <b-card-text>
-                {{content}}
-              </b-card-text>
-            </b-card-body>
-          </b-col>
+    <div>
+      <b-card :img-src="image" :img-left="index % 2 == 0" :img-right="index % 2 != 0">
+        <b-card-header :header="title" header-class="panel-header">
+        </b-card-header>
 
-          <b-col md="6">
-            <b-card-img :src="image" alt="Image" class="rounded-0"></b-card-img>
-          </b-col>
-        </b-row>
-      </b-card>
-    </div>
-
-    <div v-else>
-      <b-card no-body class="overflow-hidden" style="max-height: 300px">
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-img :src="image" alt="Image" class="rounded-0"></b-card-img>
-          </b-col>
-          <b-col md="6">
-            <b-card-body :title="title">
-              <b-card-text>
-                {{content}}
-              </b-card-text>
-            </b-card-body>
-          </b-col>
-        </b-row>
+        <b-card-text>
+          {{content}}
+        </b-card-text>
       </b-card>
     </div>
   </div>
@@ -56,5 +32,15 @@ export default {
 <style scoped>
 .card-container {
   margin-top: 20px;
+}
+.panel-header {
+  font-size: 2rem;
+  padding: 0;
+}
+.card-img-right {
+  border-radius: 20px;
+}
+.card-img-left {
+  border-radius: 20px;
 }
 </style>
