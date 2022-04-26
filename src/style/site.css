@@ -1,10 +1,11 @@
 body {
     background: #222E50;
     font-family: 'Josefin Sans', serif;
+    color: #E2E8CE;
 }
 
 .card {
     background-color: #222E50;
     border-radius: 20px;
-    border-color: #E2E8CE;
+    border-color: transparent;
 }

@@ -31,7 +31,8 @@ export default {
 
 <style scoped>
 .card-container {
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .panel-header {
   font-size: 2rem;
@@ -42,5 +43,9 @@ export default {
 }
 .card-img-left {
   border-radius: 20px;
+}
+.card-header {
+  border: 0;
+  background: transparent;
 }
 </style>

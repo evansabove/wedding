@@ -6,7 +6,9 @@
         </div>  
 
         <Panel :index="0" image="pic1.jpg" title="When is it?" content="We're not entirely sure."/>
+        <hr />
         <Panel :index="1" image="pic2.jpg" title="Where is it?" content="We haven't decided yet."/>
+        <hr />
         <Panel :index="2" image="pic3.jpg" title="What's the plan afterwards?" content="We haven't decided yet."/>
     </div>
 </template>
@@ -22,11 +24,15 @@ export default {
 </script>
 
 <style scoped>
+hr {
+    border-top: 1px solid #E2E8CE;
+    opacity: 0.5;
+    width: 90%;
+}
 .left-container {
     display: flex;
     justify-content: left;
     flex-direction: column;
-    /* width: 80%; */
 }
 .outer-container {
     width: auto;
@@ -36,7 +42,6 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #fff;
     width: 80%;
     margin: auto;
     margin-bottom: 50px;
