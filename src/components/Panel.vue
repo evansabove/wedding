@@ -13,9 +13,9 @@
 
               <p class="card-content">{{content}}</p>
             </div>
-            <div class="col-sm img-center">
+            <!-- <div class="col-sm img-center">
               <img :src="image" class="img-center" />
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -62,6 +62,7 @@ img {
 .img-center {
   display: block;
   margin: auto;
+  overflow: clip;
 }
 
 .row-title {
