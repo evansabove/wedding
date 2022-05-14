@@ -5,39 +5,24 @@
         <div class="splash-container">
         </div>  
 
-        <Panel :index="0" image="pic1.jpg" title="When is it?" content="We're not entirely sure."/>
-        <hr />
-        <Panel :index="1" image="pic2.jpg" title="Where is it?" content="We haven't decided yet."/>
-        <hr />
-        <Panel :index="2" image="pic3.jpg" title="What's the plan afterwards?" content="We haven't decided yet."/>
+        <Timeline />
     </div>
 </template>
 
 <script lang="ts">
 import Panel from './Panel.vue'
+import Timeline from './Timeline.vue'
+
 export default {
   name: 'Home',
   components: {
-   Panel   
+   Panel,
+   Timeline
   }
 };
 </script>
 
 <style scoped>
-hr {
-    border-top: 1px solid #E2E8CE;
-    opacity: 0.5;
-    width: 90%;
-}
-.left-container {
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-}
-.outer-container {
-    width: auto;
-    margin: auto;
-}
 .site-container {
     display: flex;
     flex-direction: column;
@@ -70,11 +55,5 @@ hr {
     margin: 0;
     margin-bottom: 20px;
     text-align: center;
-}
-
-@media only screen and (max-width: 1024px) {
-    .splash-container {
-        height: 200px;
-    }
 }
 </style>

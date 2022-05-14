@@ -1,14 +1,25 @@
 <template>
-  <div class="card-container">
-    <div>
-      <b-card :img-src="image" :img-left="index % 2 == 0" :img-right="index % 2 != 0">
-        <b-card-header :header="title" header-class="panel-header">
-        </b-card-header>
+  <div style="position: relative">
+    <span class="dot-outer"></span>
+    <span class="dot-inner"></span>
+    <div class="card-container">
+      <div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <p class="row-title">{{time}}</p>
+              <p class="date">{{date}}</p>
+              <p>{{location}}</p>
 
-        <b-card-text>
-          {{content}}
-        </b-card-text>
-      </b-card>
+              <p class="card-content">{{content}}</p>
+            </div>
+            <div class="col-sm img-center">
+              <img :src="image" class="img-center" />
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -19,7 +30,9 @@
 export default {
   name: 'Panel',
   props: {
-    title: String,
+    time: String,
+    date: String,
+    location: String,
     content: String,
     image: String,
     index: Number
@@ -30,22 +43,58 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .card-container {
   margin-top: 50px;
   margin-bottom: 50px;
-}
-.panel-header {
-  font-size: 2rem;
-  padding: 0;
-}
-.card-img-right {
+  margin-left: 50px;
+  border: 1px solid rgba(226, 232, 206, 0.3);
   border-radius: 20px;
 }
-.card-img-left {
+img {
   border-radius: 20px;
 }
-.card-header {
-  border: 0;
-  background: transparent;
+
+.img-center {
+  display: block;
+  margin: auto;
+}
+
+.row-title {
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.date {
+  margin-bottom: 0;
+}
+
+.card-content {
+  margin-top: 50px;
+}
+
+.dot-outer {
+  position: absolute;
+  top: 50%;
+  height: 24px;
+  width: 24px;
+  background-color: #E2E8CE;
+  border-radius: 50%;
+  margin-top: -12px;
+}
+
+.dot-inner {
+  position: absolute;
+  top: 50%;
+  height: 16px;
+  width: 16px;
+  background-color: #222E50;
+  border-radius: 50%;
+  margin-top: -8px;
+  left: 4px;
 }
 </style>
