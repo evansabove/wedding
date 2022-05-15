@@ -5,7 +5,10 @@
         <div class="splash-container">
         </div>  
 
-        <Timeline />
+        <p class="sub-heading">Saturday 23rd September 2023</p>
+        <p class="sub-heading">Invitations to follow</p>
+
+        <!-- <Timeline /> -->
     </div>
 </template>
 
@@ -36,13 +39,14 @@ export default {
     height: 500px;
     background-image: url('../../public/splash5.jpg');
     background-position: center center;
-    background-size: 100% auto;
+    background-size: cover;
     background-repeat: no-repeat;
     opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 .mega {
     font-size: 5rem;

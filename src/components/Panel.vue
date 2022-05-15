@@ -7,9 +7,9 @@
         <div class="container">
           <div class="row">
             <div class="col-sm">
-              <p class="row-title">{{time}}</p>
-              <p class="date">{{date}}</p>
-              <p>{{location}}</p>
+              <p class="white row-title">{{time}}</p>
+              <p class="white date">{{date}}</p>
+              <p class="white">{{location}}</p>
 
               <p class="card-content">{{content}}</p>
             </div>
@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+.white {
+  color: #fff;
+}
 .container {
   padding-top: 15px;
   padding-bottom: 15px;
