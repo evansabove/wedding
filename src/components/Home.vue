@@ -51,11 +51,10 @@ export default {
 .mega {
     font-size: 5rem;
     margin: 0;
-    margin-bottom: 20px;
     text-align: center;
 }
 .sub-heading {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     margin: 0;
     margin-bottom: 20px;
     text-align: center;
