@@ -3,7 +3,7 @@
         <p class="mega">Andy and Liz</p>
         <p class="sub-heading">are getting married</p>
         <div class="splash-container">
-        </div>  
+        </div>
 
         <p class="sub-heading">Saturday 23rd September 2023</p>
         <p class="sub-heading">Invitations to follow</p>
@@ -37,7 +37,7 @@ export default {
 .splash-container {
     width: 100%;
     height: 500px;
-    background-image: url('../../public/splash5.jpg');
+    background-image: url('../../public/splash7.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
