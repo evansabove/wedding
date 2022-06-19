@@ -7,14 +7,12 @@
 
         <p class="sub-heading">Saturday 23rd September 2023</p>
         <p class="sub-heading">Invitations to follow</p>
-
-        <!-- <Timeline /> -->
     </div>
 </template>
 
 <script lang="ts">
-import Panel from './Panel.vue'
-import Timeline from './Timeline.vue'
+import Panel from '../components/Panel.vue'
+import Timeline from '../components/Timeline.vue'
 
 export default {
   name: 'Home',

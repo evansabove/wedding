@@ -11,14 +11,12 @@
               <p class="white date">{{date}}</p>
               <p class="white">{{location}}</p>
 
-              <p class="card-content">{{content}}</p>
+              <p class="card-content">
+                <slot></slot>
+              </p>
             </div>
-            <!-- <div class="col-sm img-center">
-              <img :src="image" class="img-center" />
-            </div> -->
           </div>
         </div>
-
       </div>
     </div>
   </div>
