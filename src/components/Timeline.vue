@@ -15,7 +15,7 @@
                   height="400"
                   style="border:0"
                   referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC02ljmnzYri49PY-Yxulr8LRivNtbiFDU&q=Greenhill+Methodist+Church&zoom=11"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDcZJrp_43FrSCUPcS-ZseO1HLa2ygrMUE&q=Greenhill+Methodist+Church&zoom=11"
                   allowfullscreen>
               </iframe>
             </Panel>
@@ -34,7 +34,7 @@
                   height="400"
                   style="border:0"
                   referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyC02ljmnzYri49PY-Yxulr8LRivNtbiFDU
+                  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDcZJrp_43FrSCUPcS-ZseO1HLa2ygrMUE
                     &origin=Greenhill+Methodist+Church
                     &destination=Bakewell+Retreats"
                   allowfullscreen>
