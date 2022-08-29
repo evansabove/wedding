@@ -8,8 +8,7 @@
           <div class="row">
             <div class="col-sm">
               <p class="white row-title">{{time}}</p>
-              <p class="white date">{{date}}</p>
-              <p class="white">{{location}}</p>
+              <p class="white location">{{location}}</p>
 
               <p class="card-content">
                 <slot></slot>
@@ -29,10 +28,8 @@ export default {
   name: 'Panel',
   props: {
     time: String,
-    date: String,
     location: String,
     content: String,
-    image: String,
     index: Number
   },
   components: {
@@ -60,19 +57,14 @@ img {
   border-radius: 20px;
 }
 
-.img-center {
-  display: block;
-  margin: auto;
-  overflow: clip;
-}
-
 .row-title {
   font-size: 3rem;
   margin-bottom: 0;
 }
 
-.date {
+.location {
   margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .card-content {

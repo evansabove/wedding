@@ -1,13 +1,14 @@
 <template>
-    <div class="site-container">
-        <p class="mega">Andy and Liz</p>
-        <p class="sub-heading">are getting married</p>
-        <div class="splash-container">
-        </div>
+  <div class="site-container">
+      <p class="mega">Andy and Liz</p>
+      <p class="sub-heading">Saturday 23rd September 2023</p>
 
-        <p class="sub-heading">Saturday 23rd September 2023</p>
-        <p class="sub-heading">Invitations to follow</p>
-    </div>
+<!--    <p class="sub-heading">are getting married</p>-->
+      <div class="splash-container">
+      </div>
+
+      <Timeline />
+  </div>
 </template>
 
 <script lang="ts">
@@ -45,6 +46,9 @@ export default {
     align-items: center;
     border-radius: 20px;
     margin-bottom: 20px;
+    border: 1px solid #E2E8CE;
+    padding-top: 10px;
+
 }
 .mega {
     font-size: 5rem;
