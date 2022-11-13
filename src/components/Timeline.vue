@@ -30,7 +30,7 @@
                 image="pic2.jpg" 
                 time="2pm Haddon Grove Farm Cottages, Bakewell"
                 location="">
-              <p>The party continues at Haddon Grove Farm Cottages in the rolling hills outside Bakewell. Join us for food, fun and games!</p>
+              <p>The party continues at <a target="_blank" href="https://www.bakewellretreats.com/haddongrove">Haddon Grove Farm Cottages</a> in the rolling hills outside Bakewell. Join us for food, fun and games!</p>
               <p>Parking is available on site.</p>
 
               <div class="address">
