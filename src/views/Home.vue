@@ -7,6 +7,10 @@
       </div>
     </div>
     <Timeline/>
+    <div style="position: relative">
+      <p style="font-size: 0.8rem; text-align: center; margin-bottom: 5px;">Please come <span style="color: red">❤</span></p>
+    </div>
+
   </div>
 </template>
 
@@ -30,13 +34,13 @@ export default {
   justify-content: center;
   width: 100%;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 
 .splash-container {
   width: 100%;
   height: 700px;
-  background-image: url('../../public/splash9.jpg');
+  background-image: url('../../public/splash7.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

@@ -7,7 +7,7 @@
                 time="12pm Greenhill Methodist Church, Sheffield"
                 location=""
                 content="Join us at Greenhill Methodist Church for the wedding ceremony.">
-              <p>Let's get married! Join us for our wedding ceremony. Please arrive from 11.30am for a 12.00pm start. You can park at the church or in streets nearby.</p>
+              <p>Let's get married! Join us for our wedding ceremony. Please arrive by 11.30am for a 12.00pm start. You can park at the church or in streets nearby.</p>
 
               <div class="address">
                 <p><a href="https://www.greenhillmethodistchurch.com/" target="_blank">Greenhill Methodist Church</a>, School Lane, Sheffield, S8 7RL.</p>
@@ -53,13 +53,6 @@
             </Panel>
 
           <Panel
-              :index="2"
-              time="7pm Haddon Grove Farm Cottages, Bakewell"
-              location="">
-            <p>Join us for the evening party!</p>
-          </Panel>
-
-            <Panel
                 :index="2"
                 time="Bedtime"
                 location="">
@@ -83,7 +76,6 @@
             <p class="day-header">
               Sunday
             </p>
-
           <Panel
               :index="2"
               date="Saturday 23rd September 2023">
@@ -91,11 +83,22 @@
             <ul>
               <li>A delicious brunch</li>
               <li>Collecting empty bottles</li>
+              <li>Aimlessly wandering around</li>
               <li>A walk in the beautiful Peak District</li>
               <li>Pool party</li>
               <li>A BBQ</li>
             </ul>
           </Panel>
+
+          <p class="day-header">
+            Are you in?
+          </p>
+
+          <Panel
+          :index="3">
+            <p>Please send an email to rsvp@<span>andyandliz.wedding</span> confirming your numbers and any dietary requirements!</p>
+          </Panel>
+
         </div>
     </div>
 </template>
@@ -140,8 +143,5 @@ export default {
   p {
     margin-bottom: 0;
   }
-}
-
-button {
 }
 </style>
