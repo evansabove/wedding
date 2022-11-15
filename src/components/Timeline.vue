@@ -13,7 +13,7 @@
                 <p><a href="https://www.greenhillmethodistchurch.com/" target="_blank">Greenhill Methodist Church</a>, School Lane, Sheffield, S8 7RL.</p>
               </div>
 
-              <button @click="showChurchMap = !showChurchMap">{{ showChurchMap ? 'Hide map' : 'Show map'}}</button>
+              <button class="btn btn-light" @click="showChurchMap = !showChurchMap">{{ showChurchMap ? 'Hide map' : 'Show map'}}</button>
               <iframe
                   v-if="showChurchMap"
                   width="100%"
@@ -37,7 +37,7 @@
                 <p>B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JF.</p>
               </div>
 
-              <button @click="showHaddonMap = !showHaddonMap">{{ showHaddonMap ? 'Hide route' : 'Show route'}}</button>
+              <button class="btn btn-light" @click="showHaddonMap = !showHaddonMap">{{ showHaddonMap ? 'Hide route' : 'Show route'}}</button>
 
               <iframe
                   v-if="showHaddonMap"
@@ -97,8 +97,12 @@
           <Panel
           :index="3">
             <p>Please send an email to rsvp@<span>andyandliz.wedding</span> confirming your numbers and any dietary requirements!</p>
+            <div >
+              <div style="text-align: center">
+                <img class="together" src="together.jpg" />
+              </div>
+            </div>
           </Panel>
-
         </div>
     </div>
 </template>
@@ -142,6 +146,14 @@ export default {
 
   p {
     margin-bottom: 0;
+  }
+}
+
+.together {
+  width: 50%;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
   }
 }
 </style>

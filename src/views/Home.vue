@@ -8,7 +8,7 @@
     </div>
     <Timeline/>
     <div style="position: relative">
-      <p style="font-size: 0.8rem; text-align: center; margin-bottom: 5px;">Please come <span style="color: red">❤</span></p>
+      <p style="font-size: 0.8rem; text-align: center; margin-bottom: 5px;">Made with <span style="color: red">❤</span> by us</p>
     </div>
 
   </div>
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .site-container {
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ export default {
 .splash-container {
   width: 100%;
   height: 700px;
-  background-image: url('../../public/splash7.jpg');
+  background-image: url('../../public/splash.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -50,6 +50,10 @@ export default {
   align-items: center;
   margin-bottom: 20px;
   padding-top: 10px;
+
+  @media only screen and (max-width: 600px) {
+    height: 500px;
+  }
 }
 
 .mega {
