@@ -1,0 +1,12 @@
+{
+    "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+    "configurations": {
+        "andyandliz-wedding": {
+            "appLocation": "website",
+            "appBuildCommand": "npm run build",
+            "outputLocation": "dist",
+            "apiLocation": "backend",
+            "apiBuildCommand": "dotnet build"
+        }
+    }
+}
