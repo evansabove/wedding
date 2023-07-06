@@ -5,12 +5,16 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 import './style/site.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faRing } from '@fortawesome/free-solid-svg-icons'
+import { faRing, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import router from './router'
+import Nav from './components/Nav.vue'
 
 library.add(faRing)
+library.add(faBars)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('navigation', Nav)
 
 Vue.config.productionTip = false
 

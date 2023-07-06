@@ -5,8 +5,8 @@
         <div class="container">
           <div class="row">
             <div class="col-sm">
-              <p class="white row-title">{{time}}</p>
-              <p class="white location">{{location}}</p>
+              <p class="row-title">{{time}}</p>
+              <p class="location">{{location}}</p>
 
               <p class="card-content">
                 <slot></slot>
@@ -42,12 +42,22 @@ export default {
 .container {
   padding-top: 15px;
   padding-bottom: 15px;
+  /* border: 1px solid #fff;
+  border-radius: 1rem; */
+  /* box-shadow: 2px 2px 3px white;
+  background: white;
+  color: #222E50; */
 }
 
 .card-container {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+/* a {
+  color: #222E50;
+} */
+
 img {
   border-radius: 20px;
 }
