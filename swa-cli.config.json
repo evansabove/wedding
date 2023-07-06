@@ -6,7 +6,9 @@
             "appBuildCommand": "npm run build",
             "outputLocation": "dist",
             "apiLocation": "backend",
-            "apiBuildCommand": "dotnet build"
+            "apiBuildCommand": "dotnet build",
+            "apiVersion": "6.0",
+            "apiLanguage": "dotnet"
         }
     }
 }
