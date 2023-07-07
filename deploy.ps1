@@ -1,0 +1,3 @@
+swa build
+
+swa deploy --deployment-token 6401782d9501d4e1f2fce3bbb77141981cb9c85b8deef99342cfcaa1466843813-f7965845-7b86-4130-996a-38cf03454574003248893 --verbose=silly
