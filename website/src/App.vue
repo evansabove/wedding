@@ -1,9 +1,7 @@
 <template>
   <div class="site-container">
     <navigation />
-    <div class="page-container">
-      <router-view />
-    </div>
+    <router-view />
     <!-- <div style="position: relative">
       <p style="font-size: 0.8rem; text-align: center; margin-bottom: 5px">
         Made with <span style="color: red">❤</span> by us

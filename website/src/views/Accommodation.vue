@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <h1>Accommodation</h1>
     <Panel>
       <p>
@@ -9,6 +9,11 @@
         >
         for Friday 22nd, Saturday 23rd and Sunday 24th nights.
       </p>
+      <p>
+        The address is B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JF
+      </p>
+      <p>What3Words: paces.downward.firepower</p> </Panel
+    ><Panel>
       <p>
         The cottages range from one to five bedrooms sleeping 49 guests across
         the whole site, and each contain a kitchen, bathrooms and communal
