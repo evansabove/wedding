@@ -18,8 +18,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-container {
-  text-align: center;
-  margin-top: 2rem;
-}
 </style>

@@ -49,11 +49,13 @@ nav {
 nav a {
   color: #fff;
   font-weight: normal !important;
+  text-decoration: none;
 }
 
 .nav-item {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    font-size: 1.25rem;
 }
 
 .navbar-brand {

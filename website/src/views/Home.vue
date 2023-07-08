@@ -7,26 +7,25 @@
       </div>
     </div>
 
-    <h1 class="centered">It's getting closer!</h1>
+    <div class="page-container">
+      <h1 class="centered">It's getting closer!</h1>
 
-    <Panel :index="1">
-      <p>
-        We're really looking forward to celebrating our day with you!
-        Check out the agenda for the day <router-link to="/agenda">here</router-link>.
-      </p>
-    </Panel>
+      <Panel :index="1">
+        <p>
+          We're really looking forward to celebrating our day with you! Check
+          out the agenda for the day
+          <router-link to="/agenda">here</router-link>.
+        </p>
+      </Panel>
 
-    <Panel :index="2">
-      <p>
-        Please send an email to rsvp@<span>andyandliz.wedding</span>
-        confirming your numbers and any dietary requirements!
-      </p>
-      <div>
-        <div style="text-align: center">
-          <img class="together" src="together.jpg" />
+      <Panel :index="2">
+        <div>
+          <div style="text-align: center">
+            <img class="together" src="together.jpg" />
+          </div>
         </div>
-      </div>
-    </Panel>
+      </Panel>
+    </div>
   </div>
 </template>
 

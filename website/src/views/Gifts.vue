@@ -13,10 +13,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-container {
-  text-align: center;
-  padding-top: 2rem;
-  max-width: 800px;
-  margin: auto;
-}
 </style>
