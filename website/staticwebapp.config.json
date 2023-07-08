@@ -5,7 +5,7 @@
     "navigationFallback": {
         "rewrite": "/index.html",
         "exclude": [
-            "/images/*.{png,jpg,gif}",
+            "/images/*.{png,jpg,gif,ico,txt}",
             "/css/*"
         ]
     }

@@ -5,7 +5,7 @@
       <p>In a nutshell... we already have everything we need!</p>
       <p>
         For our honeymoon, we are planning to go to Europe on our new motorbike
-        (Margaret the BMW), to try and get to the Italian lakes. If you wanted
+        (Margaret the BMW GS), to try and get to the Italian lakes. If you wanted
         to gift us something, we would welcome some money towards pasta, pizza
         and petrol.
       </p>
