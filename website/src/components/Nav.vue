@@ -1,36 +1,19 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
-    <router-link class="navbar-brand" to="/">
-        Andy & Liz
-    </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon">
-        <font-awesome-icon icon="fa-solid fa-bars" style="color: #fff"/>
-      </span>
-    </button>
+  <div>
+    <b-navbar toggleable="lg" type="dark">
+      <b-navbar-brand href="/">Andy & Liz</b-navbar-brand>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link class="nav-link" to="gifts">Gifts</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="agenda">Agenda</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="accommodation">Accommodation</router-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="agenda">Agenda</b-nav-item>
+          <b-nav-item href="accommodation">Accommodation</b-nav-item>
+          <b-nav-item href="gifts">Gifts</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -53,12 +36,12 @@ nav a {
 }
 
 .nav-item {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    font-size: 1.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .navbar-brand {
-    text-decoration: none;
+  text-decoration: none;
 }
 </style>
