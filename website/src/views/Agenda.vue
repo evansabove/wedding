@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div>
     <Timeline />
   </div>
 </template>
