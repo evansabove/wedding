@@ -16,16 +16,14 @@
     ><Panel>
       <p>
         Even if you're not staying over - you're welcome to come and go as you
-        please!
+        please! There are outdoor BBQs, a games room and a swimming pool (so pack your
+        costume!).
       </p>
-
+    </Panel>
+    <Panel>
       <p>
-        There are outdoor BBQs, a games room and a swimming pool (so pack your
-        costume!). We would love to have you to stay.
-      </p>
-      <p>
-        Room allocations will be decided closer to the time - we'll keep in
-        touch!
+        We would love to have you to stay. Room allocations will be decided
+        closer to the time - we'll keep in touch. 
       </p>
     </Panel>
     <Panel>
