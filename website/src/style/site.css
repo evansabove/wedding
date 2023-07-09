@@ -1,20 +1,29 @@
 body {
-    background: #222E50;
+    background: #222e50;
     font-family: 'Josefin Sans', serif;
     font-size: 1.5rem;
-    color: #FFF;
+    color: #fff;
 }
 
 a {
-    color: #FFFFFF;
+    color: #fff;
     text-decoration: underline;
 }
 
 a:hover {
-    color: #FFF
+    color: #fff
 }
 
 button {
     border-radius: 20px;
     font-size: 1.2rem;
 }
+
+.page-container {
+    text-align: center;
+    padding-top: 2rem;
+    max-width: 800px;
+    margin: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }

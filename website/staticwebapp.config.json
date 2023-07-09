@@ -1,5 +1,12 @@
 {
     "platform": {
         "apiRuntime": "dotnet:6.0"
+    },
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": [
+            "/images/*.{png,jpg,gif,ico,txt}",
+            "/css/*"
+        ]
     }
 }
