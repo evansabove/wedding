@@ -7,7 +7,7 @@
         <a target="_blank" href="https://www.bakewellretreats.com/haddongrove"
           >Haddon Grove Farm Cottages</a
         >
-        for Friday 22nd, Saturday 23rd and Sunday 24th nights.
+        for Friday 22nd - Sunday 24th (3 nights).
       </p>
       <p>
         The address is B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JF
@@ -15,19 +15,24 @@
       <p>What3Words: paces.downward.firepower</p> </Panel
     ><Panel>
       <p>
-        The cottages range from one to five bedrooms sleeping 49 guests across
-        the whole site, and each contain a kitchen, bathrooms and communal
-        areas.
+        Even if you're not staying over - you're welcome to come and go as you
+        please!
+      </p>
+
+      <p>
+        There are outdoor BBQs, a games room and a swimming pool (so pack your
+        costume!). We would love to have you to stay.
       </p>
       <p>
-        There are also outdoor BBQs, a games room, a playground and a swimming
-        pool (so pack your costume!). We would love to have you to stay!
+        Room allocations will be decided closer to the time - we'll keep in
+        touch!
       </p>
+    </Panel>
+    <Panel>
       <p>
         As part of our hire, we've paid for all the rooms upfront. The rooms owe
         us about £40 per person per night, so a contribution around this figure
-        would be great. Get in touch if you're interested, we'd really love to
-        have you! 👍
+        would be great 👍
       </p>
     </Panel>
   </div>
