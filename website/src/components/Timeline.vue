@@ -1,7 +1,7 @@
 <template>
   <div class="panel-outer">
     <div class="panel-container">
-      <p class="day-header">Saturday</p>
+      <p class="day-header">Saturday 23rd September</p>
       <Panel :index="0" time="11.30am" location="Guests arrive">
         <p>
           Join us for our wedding ceremony. Please arrive by 11.30am for a
@@ -40,8 +40,8 @@
         <p>Let's get married!</p>
       </Panel>
 
-      <Panel :index="0" time="1pm" location="Nibbles and confetti">
-        <p>Throw confetti and have a pie!</p>
+      <Panel :index="0" time="1pm" location="Confetti and nibbles">
+        <p>Shower us in confetti!</p>
       </Panel>
 
       <Panel :index="0" time="2pm" location="Head to Bakewell">
@@ -70,7 +70,7 @@
       </Panel>
 
       <Panel :index="0" time="4pm" location="Food">
-        <p>The wedding breakfast is served - yum!</p>
+        <p>The wedding breakfast is served!</p>
       </Panel>
 
       <Panel :index="0" time="6pm" location="Games">
@@ -78,32 +78,32 @@
       </Panel>
 
       <Panel :index="0" time="7.45pm" location="Cutting of the cake">
-        <p>A slice of cake to keep you going!</p>
+        <p>Who doesn't love cake?</p>
       </Panel>
 
       <Panel :index="0" time="8pm" location="Band - set 1">
-        <p>Tunes</p>
+        <p>Tunes. Dancing shoes on.</p>
       </Panel>
 
       <Panel :index="0" time="8.45pm" location="Evening food">
-        <p>A little nibble</p>
+        <p>A little nibble...</p>
       </Panel>
 
       <Panel :index="0" time="9.30pm" location="Band - set 2">
-        <p>More noise</p>
+        <p>Dancing and drinks</p>
       </Panel>
 
       <Panel :index="0" time="10.15pm" location="Sparklers">
-        <p>Playing with fire</p>
+        <p>Ooo pretty</p>
       </Panel>
 
       <Panel :index="0" time="11pm" location="Winding down">
-        <p>...</p>
+        <p>Chill out, or head for bed!</p>
       </Panel>
 
-      <p class="day-header">Sunday</p>
-      <Panel :index="2" date="Saturday 23rd September 2023">
-        <p>Whatever you feel!</p>
+      <p class="day-header">Sunday 24th September</p>
+      <Panel :index="2">
+        <p>To be decided!</p>
       </Panel>
     </div>
   </div>
