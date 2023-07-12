@@ -4,6 +4,7 @@ import Home from "@/views/Home.vue";
 import Gifts from "@/views/Gifts.vue";
 import Agenda from "@/views/Agenda.vue";
 import Accommodation from "@/views/Accommodation.vue";
+import Photos from "@/views/Photos.vue";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/accommodation',
     name: 'accommodation',
     component: Accommodation
+  },
+  {
+    path: '/photos',
+    name: 'photos',
+    component: Photos
   },
 ]
 

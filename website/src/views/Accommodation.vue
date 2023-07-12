@@ -10,7 +10,7 @@
         for Friday 22nd - Sunday 24th (3 nights).
       </p>
       <p>
-        The address is B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JF
+        The address is B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JE
       </p>
       <p>What3Words: paces.downward.firepower</p> </Panel
     ><Panel>
