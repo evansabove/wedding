@@ -48,7 +48,7 @@
         <p>Leave the church behind and head to the party.</p>
 
         <div class="address">
-          <p>B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JF.</p>
+          <p>B5055 Monyash Road, Nr Over Haddon, Bakewell, DE45 1JE.</p>
         </div>
 
         <button class="btn btn-primary" @click="showHaddonMap = !showHaddonMap">
