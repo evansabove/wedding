@@ -21,7 +21,7 @@
       <Panel :index="2">
         <div>
           <div style="text-align: center">
-            <img class="together" src="together.jpg" />
+            <img class="together" src="together.webp" />
           </div>
         </div>
       </Panel>
@@ -46,7 +46,7 @@ export default {
 .splash-container {
   width: 100%;
   height: 700px;
-  background-image: url("../../public/splash.png");
+  background-image: url("../../public/splash.webp");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
