@@ -21,7 +21,7 @@
       <Panel :index="2">
         <div>
           <div style="text-align: center">
-            <img class="together" src="together.jpg" />
+            <img class="together" src="together.webp" />
           </div>
         </div>
       </Panel>
