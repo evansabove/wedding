@@ -13,7 +13,7 @@
 
     <Panel :index="2">
       <div style="text-align: center">
-        <img class="together" src="margaret.jpg" />
+        <img class="margaret" src="margaret.jpg" />
       </div>
     </Panel>
   </div>
@@ -31,4 +31,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.margaret {
+  width: 50%;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
 </style>
