@@ -10,6 +10,12 @@
         and petrol.
       </p>
     </Panel>
+
+    <Panel :index="2">
+      <div style="text-align: center">
+        <img class="together" src="margaret.jpg" />
+      </div>
+    </Panel>
   </div>
 </template>
 
