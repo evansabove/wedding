@@ -3,7 +3,7 @@
     <h1>Gifts</h1>
     <Panel :index="1">
       <p>In a nutshell... we already have everything we need!</p>
-      <p class="mb-2">
+      <p>
         For our honeymoon, we are planning to go to Europe on our new motorbike
         (Margaret the BMW GS), to try and get to the Italian lakes. If you wanted
         to gift us something, we would welcome some money towards pasta, pizza
