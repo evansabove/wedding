@@ -19,15 +19,17 @@
 <script lang="ts">
 import Panel from "../components/Panel.vue";
 import axios from 'axios'
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Photos",
   components: {
     Panel,
   },
   data() {
     return {
-      file: null
+      file: null,
+      uploadButtonEnabled: false
     };
   },
   methods: {
@@ -35,14 +37,20 @@ export default {
       let formData = new FormData();
       formData.append('file', (this as any).file);
 
+      this.uploadButtonEnabled = false;
+
       axios.post('api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
+      }).then((response) => {
+      }).catch((error) => {
+      }).finally(() => {
+        this.uploadButtonEnabled = true;
       })
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
