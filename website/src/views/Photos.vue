@@ -19,9 +19,8 @@
 <script lang="ts">
 import Panel from "../components/Panel.vue";
 import axios from 'axios'
-import { defineComponent } from "vue";
 
-export default defineComponent({
+export default {
   name: "Photos",
   components: {
     Panel,
@@ -29,15 +28,12 @@ export default defineComponent({
   data() {
     return {
       file: null,
-      uploadButtonEnabled: false
     };
   },
   methods: {
     upload: function() {
       let formData = new FormData();
       formData.append('file', (this as any).file);
-
-      this.uploadButtonEnabled = false;
 
       axios.post('api/upload', formData, {
         headers: {
@@ -46,11 +42,10 @@ export default defineComponent({
       }).then((response) => {
       }).catch((error) => {
       }).finally(() => {
-        this.uploadButtonEnabled = true;
       })
     }
   }
-});
+};
 </script>
 
 <style lang="scss" scoped>
