@@ -35,7 +35,7 @@ jobs:
           api_location: "apibuild" 
           skip_api_build: "true"
           api_build_command: "dotnet build"
-          output_location: "dist" 
+          output_location: "dist"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
