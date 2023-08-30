@@ -19,7 +19,7 @@ jobs:
         with:
           submodules: true
       - name: Build
-        run: dotnet build --configuration Release -o dotnetbuild
+        run: dotnet build backend --configuration Release -o dotnetbuild
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
