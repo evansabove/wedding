@@ -6,7 +6,8 @@
         "rewrite": "/index.html",
         "exclude": [
             "/images/*.{png,jpg,gif,ico,txt}",
-            "/css/*"
+            "/css/*",
+            "/api/*"
         ]
     }
 }
