@@ -18,6 +18,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+      - name: Build
+        run: dotnet build backend --configuration Release -o apibuild
+      - uses: actions/upload-artifact@v3
+        with:
+          name: api
+          path: apibuild
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -26,7 +32,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           app_location: "website" 
-          api_location: "backend" 
+          api_location: "apibuild" 
+          skip_api_build: "true"
           api_build_command: "dotnet build"
           output_location: "dist"
 
