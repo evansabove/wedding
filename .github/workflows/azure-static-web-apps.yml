@@ -34,7 +34,7 @@ jobs:
           app_location: "website" 
           api_location: "apibuild" 
           skip_api_build: "true"
-          api_build_command: "dotnet build"
+          api_build_command: "dotnet build" 
           output_location: "dist"
 
   close_pull_request_job:
