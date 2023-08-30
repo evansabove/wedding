@@ -8,20 +8,20 @@ using Microsoft.Extensions.Logging;
 
 namespace wedding_backend
 {
-    //public static class UploadMedia
-    //{
-    //    [FunctionName("UploadMedia")]
-    //    public static async Task<IActionResult> Run(
-    //        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "upload")] [FromForm] HttpRequest req,
-    //        ILogger log, [Blob("media/{rand-guid}", FileAccess.Write)] Stream media)
-    //    {
-    //        var file = req.Form.Files[0];
+    public static class UploadMedia
+    {
+       [FunctionName("UploadMedia")]
+       public static async Task<IActionResult> Run(
+           [HttpTrigger(AuthorizationLevel.Function, "post", Route = "upload")] [FromForm] HttpRequest req,
+           ILogger log, [Blob("media/{rand-guid}", FileAccess.Write)] Stream media)
+       {
+           var file = req.Form.Files[0];
 
-    //        using var stream = file.OpenReadStream();
+           using var stream = file.OpenReadStream();
 
-    //        await stream.CopyToAsync(media);
+           await stream.CopyToAsync(media);
 
-    //        return new NoContentResult();
-    //    }
-    //}
+           return new NoContentResult();
+       }
+    }
 }
