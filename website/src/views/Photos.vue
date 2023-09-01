@@ -12,6 +12,8 @@
     <Panel :index="1">
       <b-button :disabled="!Boolean(file)" @click="upload">Upload</b-button>
     </Panel>
+
+    <img v-for="photo in photos" :src="photo.sasUri" :key="photo.sasUri" />
     
   </div>
 </template>
@@ -19,7 +21,7 @@
 <script lang="ts">
 import Panel from "../components/Panel.vue";
 import axios from 'axios'
-
+import IPhotoResponse from '../IPhotoResponse'
 export default {
   name: "Photos",
   components: {
@@ -28,14 +30,23 @@ export default {
   data() {
     return {
       file: null,
+      photos: [],
     };
   },
+  mounted() {
+    (this as any).load();
+  },
   methods: {
+    load: async function() {
+      let photos = await axios.get<IPhotoResponse>('https://andyandlizwedding.azurewebsites.net/api/media?code=35cMSYzqrogv_bV3x2zjcwCnKRVgnzUGNySxM_HDxLmzAzFuxgCmag==');
+
+      (this as any).photos = photos.data;
+    },
     upload: function() {
       let formData = new FormData();
       formData.append('file', (this as any).file);
 
-      axios.post('api/upload', formData, {
+      axios.post('https://andyandlizwedding.azurewebsites.net/api/media?code=lAHQKstJu2b3m-sm2qWP0FcQL-sSHH8JmJCrnaBMQJjsAzFupYAI5Q==', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

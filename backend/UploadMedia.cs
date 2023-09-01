@@ -5,23 +5,40 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs;
+using System;
 
 namespace wedding_backend
 {
-    public static class UploadMedia
+    public class UploadMedia
     {
-       [FunctionName("UploadMedia")]
-       public static async Task<IActionResult> Run(
-           [HttpTrigger(AuthorizationLevel.Function, "post", Route = "upload")] [FromForm] HttpRequest req,
-           ILogger log, [Blob("media/{rand-guid}", FileAccess.Write)] Stream media)
-       {
-           var file = req.Form.Files[0];
+        private readonly Config config;
 
-           using var stream = file.OpenReadStream();
+        public UploadMedia(Config config)
+        {
+            this.config = config;
+        }
 
-           await stream.CopyToAsync(media);
+        [FunctionName("UploadMedia")]
+        public async Task<IActionResult> Run(
+           [HttpTrigger(AuthorizationLevel.Function, "post", Route = "media")][FromForm] HttpRequest req,
+           ILogger log)
+        {
+            using var file = req.Form.Files[0].OpenReadStream();
 
-           return new NoContentResult();
-       }
+            await Upload(file, req.Form.Files[0].ContentType);
+
+            return new NoContentResult();
+        }
+
+        private async Task Upload(Stream stream, string contentType)
+        {
+            var blobServiceClient = new BlobServiceClient(config.BlobStorageConnectionString);
+            var containerClient = blobServiceClient.GetBlobContainerClient("media");
+            var blob = containerClient.GetBlobClient(Guid.NewGuid().ToString());
+
+            var uploadedBlob = await blob.UploadAsync(stream, new BlobHttpHeaders { ContentType = contentType });
+        }
     }
 }
