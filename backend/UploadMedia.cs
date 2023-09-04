@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs;
 using System;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace wedding_backend
 {
@@ -27,16 +29,48 @@ namespace wedding_backend
         {
             using var file = req.Form.Files[0].OpenReadStream();
 
-            await Upload(file, req.Form.Files[0].ContentType);
+            var newId = Guid.NewGuid().ToString();
+
+            await Upload(file, req.Form.Files[0].ContentType, newId);
+
+            file.Position = 0;
+
+            var thumbnailStream = await CreateThumbnail(file);
+            await Upload(thumbnailStream, req.Form.Files[0].ContentType, $"thumbnails/{newId}");
 
             return new NoContentResult();
         }
 
-        private async Task Upload(Stream stream, string contentType)
+        private static async Task<Stream> CreateThumbnail(Stream image)
+        {
+            using Image img = await Image.LoadAsync(image);
+
+            if (img.Width == img.Height)
+            {
+                img.Mutate(x => x.Resize(100, 100));
+            }
+
+            else if (img.Width > img.Height)
+            {
+                img.Mutate(x => x.Resize(100, 0));
+            }
+            else
+            {
+                img.Mutate(x => x.Resize(0, 100));
+            }
+
+            var thumbnailStream = new MemoryStream();
+            await img.SaveAsJpegAsync(thumbnailStream);
+            thumbnailStream.Position = 0;
+
+            return thumbnailStream;
+        }
+
+        private async Task Upload(Stream stream, string contentType, string fileName)
         {
             var blobServiceClient = new BlobServiceClient(config.BlobStorageConnectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient("media");
-            var blob = containerClient.GetBlobClient(Guid.NewGuid().ToString());
+            var blob = containerClient.GetBlobClient(fileName);
 
             var uploadedBlob = await blob.UploadAsync(stream, new BlobHttpHeaders { ContentType = contentType });
         }

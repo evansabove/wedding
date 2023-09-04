@@ -38,23 +38,12 @@ namespace wedding_backend
 
             await foreach (Page<BlobItem> blobPage in resultSegment)
             {
-                foreach (BlobItem blobItem in blobPage.Values)
+                foreach (BlobItem blobItem in blobPage.Values.Where(x => x.Name.StartsWith("thumbnails/")))
                 {
-                    var blobSasBuilder = new BlobSasBuilder
-                    {
-                        StartsOn = DateTime.UtcNow.AddMonths(-1),
-                        ExpiresOn = DateTime.UtcNow.AddMonths(1),
-                        BlobContainerName = "media",
-                        BlobName = blobItem.Name,
-                        Resource = "b"
-                    };
+                    var thumbnailUri = GetSasUriForBlob(containerClient, $"{blobItem.Name}");
+                    var fullImageUri = GetSasUriForBlob(containerClient, $"{blobItem.Name["thumbnails/".Length..]}");
 
-                    blobSasBuilder.SetPermissions(BlobSasPermissions.Read);
-
-                    var blobClient = containerClient.GetBlobClient(blobItem.Name);
-                    var sasUri = blobClient.GenerateSasUri(blobSasBuilder);
-
-                    allBlobs.Add(new BlobRecord(blobItem.Properties.LastModified, blobItem.Name, sasUri));
+                    allBlobs.Add(new BlobRecord(blobItem.Properties.LastModified, blobItem.Name, thumbnailUri, fullImageUri));
                 }
             }
 
@@ -62,7 +51,24 @@ namespace wedding_backend
 
             return new OkObjectResult(results);
         }
+
+        private static Uri GetSasUriForBlob(BlobContainerClient containerClient, string name)
+        {
+            var blobSasBuilder = new BlobSasBuilder
+            {
+                StartsOn = DateTime.UtcNow.AddMonths(-1),
+                ExpiresOn = DateTime.UtcNow.AddMonths(1),
+                BlobContainerName = "media",
+                BlobName = name,
+                Resource = "b"
+            };
+
+            blobSasBuilder.SetPermissions(BlobSasPermissions.Read);
+
+            var blobClient = containerClient.GetBlobClient(name);
+            return blobClient.GenerateSasUri(blobSasBuilder);
+        }
     }
 
-    public record BlobRecord(DateTimeOffset? LastModified, string Name, Uri sasUri);
+    public record BlobRecord(DateTimeOffset? LastModified, string Name, Uri ThumbnailUrl, Uri FullImageUrl);
 }
