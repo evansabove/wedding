@@ -47,7 +47,19 @@ namespace wedding_backend
 
             using Image img = await Image.LoadAsync(image);
 
-            img.Mutate(x => x.Resize(0, thumbnailHeight));
+            if(img.Width == img.Height)
+            {
+                img.Mutate(x => x.Resize(thumbnailHeight, thumbnailHeight, KnownResamplers.Lanczos3));
+            }
+            else if(img.Width > img.Height)
+            {
+                img.Mutate(x => x.Resize(thumbnailHeight, 0, KnownResamplers.Lanczos3));
+            }
+            else
+            {
+                img.Mutate(x => x.Resize(0, thumbnailHeight, KnownResamplers.Lanczos3));
+            }
+
             img.Mutate(x => x.Pad(thumbnailHeight, thumbnailHeight, Color.FromRgb(34, 46, 80)));
 
             var thumbnailStream = new MemoryStream();
