@@ -47,7 +47,8 @@ namespace wedding_backend
 
             using Image img = await Image.LoadAsync(image);
 
-            img.Mutate(x => x.Resize(0, thumbnailHeight));
+            //img.Mutate(x => x.Resize(0, thumbnailHeight));
+            img.Mutate(x => x.Pad(0, thumbnailHeight));
 
             var thumbnailStream = new MemoryStream();
             await img.SaveAsJpegAsync(thumbnailStream);
