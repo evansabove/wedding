@@ -43,21 +43,11 @@ namespace wedding_backend
 
         private static async Task<Stream> CreateThumbnail(Stream image)
         {
+            int thumbnailHeight = 250;
+
             using Image img = await Image.LoadAsync(image);
 
-            if (img.Width == img.Height)
-            {
-                img.Mutate(x => x.Resize(100, 100));
-            }
-
-            else if (img.Width > img.Height)
-            {
-                img.Mutate(x => x.Resize(100, 0));
-            }
-            else
-            {
-                img.Mutate(x => x.Resize(0, 100));
-            }
+            img.Mutate(x => x.Resize(0, thumbnailHeight));
 
             var thumbnailStream = new MemoryStream();
             await img.SaveAsJpegAsync(thumbnailStream);

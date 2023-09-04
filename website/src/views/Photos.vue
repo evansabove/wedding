@@ -14,13 +14,10 @@
     </Panel>
 
     <b-row>
-      <b-col v-for="photo in photos" :key="photo.sasUri">
-        <img v-for="photo in photos" :src="photo.sasUri" :key="photo.sasUri" />
+      <b-col v-for="photo in photos" :key="photo.thumbnailUrl">
+        <a :href="photo.fullImageUrl"><img :src="photo.thumbnailUrl"/></a>
       </b-col>
     </b-row>
-
-    
-    
   </div>
 </template>
 
