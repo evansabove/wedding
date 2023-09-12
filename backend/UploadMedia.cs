@@ -10,9 +10,13 @@ using Azure.Storage.Blobs;
 using System;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using MoreLinq;
+using System.Collections.Generic;
 
 namespace wedding_backend
 {
+    public record UploadResult(List<string> Succeeded, List<string> Failed);
+
     public class UploadMedia
     {
         private readonly Config config;
@@ -27,18 +31,37 @@ namespace wedding_backend
            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "media")][FromForm] HttpRequest req,
            ILogger log)
         {
-            using var file = req.Form.Files[0].OpenReadStream();
+            var result = new UploadResult(new List<string>(), new List<string>());
+
+            foreach(var file in req.Form.Files)
+            {
+                try
+                {
+                    result.Succeeded.Add(await Upload(file));
+                } catch(Exception ex)
+                {
+                    log.LogError(ex, "Failed to upload file");
+                    result.Failed.Add(file.FileName);
+                }
+            }
+
+            return new OkObjectResult(result);
+        }
+
+        private async Task<string> Upload(IFormFile formFile)
+        {
+            using var file = formFile.OpenReadStream();
 
             var newId = Guid.NewGuid().ToString();
 
-            await Upload(file, req.Form.Files[0].ContentType, newId);
+            await UploadToBlobStorage(file, formFile.ContentType, newId);
 
             file.Position = 0;
 
             var thumbnailStream = await CreateThumbnail(file);
-            await Upload(thumbnailStream, req.Form.Files[0].ContentType, $"thumbnails/{newId}");
+            await UploadToBlobStorage(thumbnailStream, formFile.ContentType, $"thumbnails/{newId}");
 
-            return new NoContentResult();
+            return newId;
         }
 
         private static async Task<Stream> CreateThumbnail(Stream image)
@@ -47,20 +70,29 @@ namespace wedding_backend
 
             using Image img = await Image.LoadAsync(image);
 
-            if(img.Width == img.Height)
+            if (img.Width == img.Height)
             {
-                img.Mutate(x => x.Resize(thumbnailHeight, thumbnailHeight, KnownResamplers.Lanczos3));
+                var size = Math.Min(img.Height, thumbnailHeight);
+                img.Mutate(x => x.Resize(size, size, KnownResamplers.Lanczos3));
             }
             else if(img.Width > img.Height)
             {
-                img.Mutate(x => x.Resize(thumbnailHeight, 0, KnownResamplers.Lanczos3));
+                img.Mutate(x => x.Resize(new ResizeOptions
+                {
+                    Size = new Size(thumbnailHeight, 0),
+                    Mode = ResizeMode.Crop
+                }));
             }
             else
             {
-                img.Mutate(x => x.Resize(0, thumbnailHeight, KnownResamplers.Lanczos3));
+                img.Mutate(x => x.Resize(new ResizeOptions
+                {
+                    Size = new Size(0, thumbnailHeight),
+                    Mode = ResizeMode.Crop
+                }));
             }
 
-            img.Mutate(x => x.Pad(thumbnailHeight, thumbnailHeight, Color.FromRgb(34, 46, 80)));
+            //img.Mutate(x => x.Pad(thumbnailHeight, thumbnailHeight, Color.FromRgb(34, 46, 80)));
 
             var thumbnailStream = new MemoryStream();
             await img.SaveAsJpegAsync(thumbnailStream);
@@ -69,7 +101,7 @@ namespace wedding_backend
             return thumbnailStream;
         }
 
-        private async Task Upload(Stream stream, string contentType, string fileName)
+        private async Task UploadToBlobStorage(Stream stream, string contentType, string fileName)
         {
             var blobServiceClient = new BlobServiceClient(config.BlobStorageConnectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient("media");

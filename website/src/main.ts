@@ -9,10 +9,12 @@ import { faRing, faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import router from './router'
 import Nav from './components/Nav.vue'
+import VueGallery from 'vue-gallery'
 
 library.add(faRing)
 library.add(faBars)
 
+Vue.component('VGallery', VueGallery)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('navigation', Nav)
 

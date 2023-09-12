@@ -8,6 +8,7 @@
         :state="Boolean(file)"
         placeholder="Choose a file or drop it here..."
         drop-placeholder="Drop file here..."
+        multiple
       ></b-form-file>
 
       <Panel :index="1">
@@ -27,10 +28,13 @@
 import Panel from "../components/Panel.vue";
 import axios from "axios";
 import IPhotoResponse from "../IPhotoResponse";
+import VueGallery from 'vue-gallery';
+
 export default {
   name: "Photos",
   components: {
     Panel,
+    VueGallery
   },
   data() {
     return {
@@ -40,6 +44,8 @@ export default {
   },
   mounted() {
     (this as any).load();
+  },
+  computed: {
   },
   methods: {
     load: async function () {
@@ -51,7 +57,10 @@ export default {
     },
     upload: function () {
       let formData = new FormData();
-      formData.append("file", (this as any).file);
+      //attach many
+      for (let i = 0; i < (this as any).file.length; i++) {
+        formData.append(`file${i}`, (this as any).file[i]);
+      }
 
       axios
         .post(
