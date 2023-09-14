@@ -4,19 +4,21 @@
       <h1>Photos</h1>
 
       <b-form-file
-        v-model="file"
-        :state="Boolean(file)"
-        placeholder="Choose a file or drop it here..."
+        v-model="files"
+        :state="Boolean(files)"
+        placeholder="Choose files..."
         drop-placeholder="Drop file here..."
         multiple
+        @input="upload"
+        :disabled="uploading"
       ></b-form-file>
-
-      <Panel :index="1">
-        <b-button :disabled="!Boolean(file)" @click="upload">Upload</b-button>
-      </Panel>
+      <div v-if="uploading">
+        <b-spinner variant="primary" label="Spinning" class="mt-5"></b-spinner>
+        <p>Uploading...</p>
+      </div>
     </div>
 
-    <div>
+    <div class="image-container">
       <a v-for="photo in photos" :href="photo.fullImageUrl" :key="photo.name">
         <img :src="photo.thumbnailUrl" />
       </a>
@@ -38,8 +40,9 @@ export default {
   },
   data() {
     return {
-      file: null,
+      files: null,
       photos: [],
+      uploading: false
     };
   },
   mounted() {
@@ -55,11 +58,12 @@ export default {
 
       (this as any).photos = photos.data;
     },
-    upload: function () {
+    upload: function (files) {
+      (this as any).uploading = true;
       let formData = new FormData();
-      //attach many
-      for (let i = 0; i < (this as any).file.length; i++) {
-        formData.append(`file${i}`, (this as any).file[i]);
+
+      for (let i = 0; i < files.length; i++) {
+        formData.append(`file${i}`, files[i]);
       }
 
       axios
@@ -74,13 +78,23 @@ export default {
         )
         .then((response) => {
           (this as any).load();
+          (this as any).files = []
         })
         .catch((error) => {})
-        .finally(() => {});
+        .finally(() => {
+          (this as any).uploading = false;
+        });
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.image-container {
+  display: flex;
+  align-items: ceneter;
+  justify-content: center ;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
 </style>

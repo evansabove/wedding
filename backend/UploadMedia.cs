@@ -66,31 +66,37 @@ namespace wedding_backend
 
         private static async Task<Stream> CreateThumbnail(Stream image)
         {
-            int thumbnailHeight = 250;
-
             using Image img = await Image.LoadAsync(image);
 
-            if (img.Width == img.Height)
+            var size = Math.Min(img.Height, 250);
+
+            img.Mutate(x => x.Resize(new ResizeOptions
             {
-                var size = Math.Min(img.Height, thumbnailHeight);
-                img.Mutate(x => x.Resize(size, size, KnownResamplers.Lanczos3));
-            }
-            else if(img.Width > img.Height)
-            {
-                img.Mutate(x => x.Resize(new ResizeOptions
-                {
-                    Size = new Size(thumbnailHeight, 0),
-                    Mode = ResizeMode.Crop
-                }));
-            }
-            else
-            {
-                img.Mutate(x => x.Resize(new ResizeOptions
-                {
-                    Size = new Size(0, thumbnailHeight),
-                    Mode = ResizeMode.Crop
-                }));
-            }
+                Size = new Size(size, size),
+                Mode = ResizeMode.Crop
+            }));
+
+            //if (img.Width == img.Height)
+            //{
+            //    var size = Math.Min(img.Height, thumbnailHeight);
+            //    img.Mutate(x => x.Resize(size, size, KnownResamplers.Lanczos3));
+            //}
+            //else if(img.Width > img.Height)
+            //{
+            //    img.Mutate(x => x.Resize(new ResizeOptions
+            //    {
+            //        Size = new Size(thumbnailHeight, 0),
+            //        Mode = ResizeMode.Crop
+            //    }));
+            //}
+            //else
+            //{
+            //    img.Mutate(x => x.Resize(new ResizeOptions
+            //    {
+            //        Size = new Size(0, thumbnailHeight),
+            //        Mode = ResizeMode.Crop
+            //    }));
+            //}
 
             //img.Mutate(x => x.Pad(thumbnailHeight, thumbnailHeight, Color.FromRgb(34, 46, 80)));
 
