@@ -12,9 +12,12 @@
         @input="upload"
         :disabled="uploading"
       ></b-form-file>
-      <div v-if="uploading">
-        <b-spinner variant="primary" label="Spinning" class="mt-5"></b-spinner>
+      <div v-if="uploading" class="mt-5">
+        <b-spinner variant="primary" label="Spinning" ></b-spinner>
         <p>Uploading...</p>
+      </div>
+      <div v-if="error" class="mt-5">
+        <b-alert variant="danger" show>{{error}}</b-alert>
       </div>
     </div>
 
@@ -42,7 +45,8 @@ export default {
     return {
       files: null,
       photos: [],
-      uploading: false
+      uploading: false,
+      error: ""
     };
   },
   mounted() {
@@ -60,6 +64,7 @@ export default {
     },
     upload: function (files) {
       (this as any).uploading = true;
+      (this as any).error = "";
       let formData = new FormData();
 
       for (let i = 0; i < files.length; i++) {
@@ -78,9 +83,15 @@ export default {
         )
         .then((response) => {
           (this as any).load();
-          (this as any).files = []
+          (this as any).files = [];
+
+          if(response.data.failed.length > 0){
+            (this as any).error = `${response.data.failed.length} files failed to upload.`
+          }
         })
-        .catch((error) => {})
+        .catch((error) => {
+          console.log("There was a problem uploading the files.")
+        })
         .finally(() => {
           (this as any).uploading = false;
         });
