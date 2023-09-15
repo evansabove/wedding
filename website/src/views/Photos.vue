@@ -28,7 +28,7 @@
         <img :src="photo.thumbnailUrl" />
       </a>
     </div>
-    <div class="pagination">
+    <div class="pagination" v-if="photoData.totalPages > 0">
       <b-button variant="info" @click="previous" :disabled="photoData.page <= 1">Previous</b-button>
       <span>Page {{photoData.page}} of {{photoData.totalPages}}</span>
       <b-button variant="info" @click="next" :disabled="photoData.page >= photoData.totalPages">Next</b-button>
