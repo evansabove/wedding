@@ -3,6 +3,8 @@
     <div class="page-container">
       <h1>Photos</h1>
 
+      <p>Please share your photos of our special day with us!</p>
+
       <b-form-file
         v-model="files"
         :state="Boolean(files)"
@@ -21,10 +23,15 @@
       </div>
     </div>
 
-    <div class="image-container">
-      <a v-for="photo in photos" :href="photo.fullImageUrl" :key="photo.name">
+    <div class="image-container" v-if="photoData.results.length > 0">
+      <a v-for="photo in photoData.results" :href="photo.fullImageUrl" :key="photo.name">
         <img :src="photo.thumbnailUrl" />
       </a>
+    </div>
+    <div class="pagination">
+      <b-button variant="info" @click="previous" :disabled="photoData.page <= 1">Previous</b-button>
+      <span>Page {{photoData.page}} of {{photoData.totalPages}}</span>
+      <b-button variant="info" @click="next" :disabled="photoData.page >= photoData.totalPages">Next</b-button>
     </div>
   </div>
 </template>
@@ -44,9 +51,9 @@ export default {
   data() {
     return {
       files: null,
-      photos: [],
       uploading: false,
-      error: ""
+      error: "",
+      photoData: {} as IPhotoResponse
     };
   },
   mounted() {
@@ -55,12 +62,23 @@ export default {
   computed: {
   },
   methods: {
+    next: function() {
+      (this as any).photoData.page++;
+      (this as any).load();
+    },
+    previous: function() {
+      (this as any).photoData.page--;
+      (this as any).load();
+    },
     load: async function () {
+      (this as any).photos = [];
+
+      let pageNumber = (this as any).photoData.page
       let photos = await axios.get<IPhotoResponse>(
-        "https://andyandlizwedding.azurewebsites.net/api/media?code=35cMSYzqrogv_bV3x2zjcwCnKRVgnzUGNySxM_HDxLmzAzFuxgCmag=="
+        `https://andyandlizwedding.azurewebsites.net/api/media?code=35cMSYzqrogv_bV3x2zjcwCnKRVgnzUGNySxM_HDxLmzAzFuxgCmag==&page=${pageNumber}`
       );
 
-      (this as any).photos = photos.data;
+      (this as any).photoData = photos.data;
     },
     upload: function (files) {
       (this as any).uploading = true;
@@ -82,6 +100,7 @@ export default {
           }
         )
         .then((response) => {
+          //we don't need to do a full load again - we can just push if we have the right response.
           (this as any).load();
           (this as any).files = [];
 
@@ -107,5 +126,13 @@ export default {
   justify-content: center ;
   flex-wrap: wrap;
   margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 2rem;
 }
 </style>

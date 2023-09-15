@@ -47,10 +47,27 @@ namespace wedding_backend
                 }
             }
 
-            var results = allBlobs.OrderByDescending(x => x.LastModified);
+            if(!int.TryParse(req.Query["page"], out int page))
+            {
+                page = 1;
+            }
 
-            return new OkObjectResult(results);
+            if(!int.TryParse(req.Query["pageSize"], out int pageSize))
+            {
+                pageSize = 20;
+            }
+
+            var results = allBlobs
+                .OrderByDescending(x => x.LastModified)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
+            var result = new GetMediaResponse(page, pageSize, (int)Math.Ceiling(allBlobs.Count / (double)pageSize), allBlobs.Count, results);
+
+            return new OkObjectResult(result);
         }
+
+        private record GetMediaResponse(int Page, int PageSize, int TotalPages, int TotalRecords, IEnumerable<BlobRecord> Results);
 
         private static Uri GetSasUriForBlob(BlobContainerClient containerClient, string name)
         {

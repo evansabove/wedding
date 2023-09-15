@@ -1,5 +1,9 @@
+import IPhoto from "./IPhoto";
+
 export default interface IPhotoResponse {
-    lastModified: string;
-    name: string;
-    sasUri: string
+    results: IPhoto[];
+    page: number;
+    pageSize: number;
+    totalPages: number;
 } 
+

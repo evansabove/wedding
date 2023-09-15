@@ -76,30 +76,6 @@ namespace wedding_backend
                 Mode = ResizeMode.Crop
             }));
 
-            //if (img.Width == img.Height)
-            //{
-            //    var size = Math.Min(img.Height, thumbnailHeight);
-            //    img.Mutate(x => x.Resize(size, size, KnownResamplers.Lanczos3));
-            //}
-            //else if(img.Width > img.Height)
-            //{
-            //    img.Mutate(x => x.Resize(new ResizeOptions
-            //    {
-            //        Size = new Size(thumbnailHeight, 0),
-            //        Mode = ResizeMode.Crop
-            //    }));
-            //}
-            //else
-            //{
-            //    img.Mutate(x => x.Resize(new ResizeOptions
-            //    {
-            //        Size = new Size(0, thumbnailHeight),
-            //        Mode = ResizeMode.Crop
-            //    }));
-            //}
-
-            //img.Mutate(x => x.Pad(thumbnailHeight, thumbnailHeight, Color.FromRgb(34, 46, 80)));
-
             var thumbnailStream = new MemoryStream();
             await img.SaveAsJpegAsync(thumbnailStream);
             thumbnailStream.Position = 0;
