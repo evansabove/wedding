@@ -3,11 +3,7 @@
         "apiRuntime": "dotnet:6.0"
     },
     "navigationFallback": {
-        "rewrite": "/index.html",
-        "exclude": [
-            "/images/*.{png,jpg,gif,ico,txt}",
-            "/css/*",
-            "/api/*"
-        ]
-    }
+        "rewrite": "index.html",
+        "exclude": ["/*.{png,jpg,gif,ico,webmanifest,svg}", "/*.{css,scss,js}"]
+      }
 }
