@@ -15,23 +15,42 @@
         :disabled="uploading"
       ></b-form-file>
       <div v-if="uploading" class="mt-5">
-        <b-spinner variant="primary" label="Spinning" ></b-spinner>
+        <b-spinner variant="primary" label="Spinning"></b-spinner>
         <p>Uploading...</p>
       </div>
       <div v-if="error" class="mt-5">
-        <b-alert variant="danger" show>{{error}}</b-alert>
+        <b-alert variant="danger" show>{{ error }}</b-alert>
       </div>
     </div>
 
-    <div class="image-container" v-if="photoData.results.length > 0">
-      <a v-for="photo in photoData.results" :href="photo.fullImageUrl" :key="photo.name">
-        <img :src="photo.thumbnailUrl" />
-      </a>
+    <div v-if="photoData.results.length > 0">
+      <div class="image-container">
+        <a
+          v-for="photo in photoData.results"
+          :href="photo.fullImageUrl"
+          :key="photo.name"
+        >
+          <img :src="photo.thumbnailUrl" />
+        </a>
+      </div>
+      <div class="pagination">
+        <b-button
+          variant="info"
+          @click="previous"
+          :disabled="photoData.page <= 1"
+          >Previous</b-button
+        >
+        <span>Page {{ photoData.page }} of {{ photoData.totalPages }}</span>
+        <b-button
+          variant="info"
+          @click="next"
+          :disabled="photoData.page >= photoData.totalPages"
+          >Next</b-button
+        >
+      </div>
     </div>
-    <div class="pagination" v-if="photoData.totalPages > 0">
-      <b-button variant="info" @click="previous" :disabled="photoData.page <= 1">Previous</b-button>
-      <span>Page {{photoData.page}} of {{photoData.totalPages}}</span>
-      <b-button variant="info" @click="next" :disabled="photoData.page >= photoData.totalPages">Next</b-button>
+    <div v-else class="empty-message">
+      <p>No photos yet - you could be the first!</p>
     </div>
   </div>
 </template>
@@ -40,40 +59,39 @@
 import Panel from "../components/Panel.vue";
 import axios from "axios";
 import IPhotoResponse from "../IPhotoResponse";
-import VueGallery from 'vue-gallery';
+import VueGallery from "vue-gallery";
 
 export default {
   name: "Photos",
   components: {
     Panel,
-    VueGallery
+    VueGallery,
   },
   data() {
     return {
       files: null,
       uploading: false,
       error: "",
-      photoData: {} as IPhotoResponse
+      photoData: {} as IPhotoResponse,
     };
   },
   mounted() {
     (this as any).load();
   },
-  computed: {
-  },
+  computed: {},
   methods: {
-    next: function() {
+    next: function () {
       (this as any).photoData.page++;
       (this as any).load();
     },
-    previous: function() {
+    previous: function () {
       (this as any).photoData.page--;
       (this as any).load();
     },
     load: async function () {
       (this as any).photos = [];
 
-      let pageNumber = (this as any).photoData.page
+      let pageNumber = (this as any).photoData.page;
       let photos = await axios.get<IPhotoResponse>(
         `https://andyandlizwedding.azurewebsites.net/api/media?code=35cMSYzqrogv_bV3x2zjcwCnKRVgnzUGNySxM_HDxLmzAzFuxgCmag==&page=${pageNumber}`
       );
@@ -104,12 +122,14 @@ export default {
           (this as any).load();
           (this as any).files = [];
 
-          if(response.data.failed.length > 0){
-            (this as any).error = `${response.data.failed.length} files failed to upload.`
+          if (response.data.failed.length > 0) {
+            (
+              this as any
+            ).error = `${response.data.failed.length} files failed to upload.`;
           }
         })
         .catch((error) => {
-          console.log("There was a problem uploading the files.")
+          console.log("There was a problem uploading the files.");
         })
         .finally(() => {
           (this as any).uploading = false;
@@ -123,7 +143,7 @@ export default {
 .image-container {
   display: flex;
   align-items: ceneter;
-  justify-content: center ;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 2rem;
 }
@@ -134,5 +154,10 @@ export default {
   justify-content: center;
   margin-top: 2rem;
   gap: 2rem;
+}
+
+.empty-message {
+  text-align: center;
+  margin-top: 4rem;
 }
 </style>
