@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div v-if="photoData.results.length > 0">
+    <div v-if="photoData.results && photoData.results.length > 0">
       <div class="image-container">
         <a
           v-for="photo in photoData.results"
