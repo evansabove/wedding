@@ -7,10 +7,11 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="agenda">Agenda</b-nav-item>
-          <b-nav-item href="accommodation">Accommodation</b-nav-item>
-          <b-nav-item href="gifts">Gifts</b-nav-item>
-          <b-nav-item href="photos">Photos</b-nav-item>
+          <b-nav-item href="/agenda">Agenda</b-nav-item>
+          <b-nav-item href="/accommodation">Accommodation</b-nav-item>
+          <b-nav-item href="/gifts">Gifts</b-nav-item>
+          <b-nav-item href="/photos">Your Photos</b-nav-item>
+          <b-nav-item href="/photos/official">Official Photos</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

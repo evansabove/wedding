@@ -5,6 +5,7 @@ import Gifts from "@/views/Gifts.vue";
 import Agenda from "@/views/Agenda.vue";
 import Accommodation from "@/views/Accommodation.vue";
 import Photos from "@/views/Photos.vue";
+import OfficialPhotos from "@/views/OfficialPhotos.vue";
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes: Array<RouteConfig> = [
     path: '/photos',
     name: 'photos',
     component: Photos
+  },
+  {
+    path: '/photos/official',
+    name: 'photos/official',
+    component: OfficialPhotos
   },
 ]
 
