@@ -7,21 +7,21 @@ namespace wedding_backend
 {
     public class DownsizeMedia
     {
-        private readonly Config config;
+        //private readonly Config config;
 
-        public DownsizeMedia(Config config)
-        {
-            this.config = config;
-        }
+        //public DownsizeMedia(Config config)
+        //{
+        //    this.config = config;
+        //}
 
-        [FunctionName("DownsizeMedia")]
-        public async Task Run(
-            [BlobTrigger("media/official/{name}", Connection = "BlobStorageConnectionString")] Stream original,
-            string name, ILogger log)
-        {
-            var generatedThumbnail = await ImageUtilities.CreateThumbnailAsync(original);
+        //[FunctionName("DownsizeMedia")]
+        //public async Task Run(
+        //    [BlobTrigger("media/official/{name}", Connection = "BlobStorageConnectionString")] Stream original,
+        //    string name, ILogger log)
+        //{
+        //    var generatedThumbnail = await ImageUtilities.CreateThumbnailAsync(original);
 
-            await ImageUtilities.UploadToBlobStorage(config.BlobStorageConnectionString, generatedThumbnail, "image/jpeg", $"official-thumbnails/{name}");
-        }
+        //    await ImageUtilities.UploadToBlobStorage(config.BlobStorageConnectionString, generatedThumbnail, "image/jpeg", $"official-thumbnails/{name}");
+        //}
     }
 }
